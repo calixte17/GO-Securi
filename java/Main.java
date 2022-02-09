@@ -13,11 +13,12 @@ public class Main {
         List<String> lEquipement = new Vector<String>();
         List<String> lFiche = new Vector<String>();
         //File doc = new File("test.txt");
-        File dir = new File("C:\\Users\\c.flory\\Documents\\java\\file");
+        File dir = new File("C:\\Users\\a.dupont\\Documents\\GO-Securi\\java\\file");
         File[] FileSearch = dir.listFiles(new FilenameFilter() {
             public boolean accept(File dir, String name) {
                 return name.endsWith("txt");
         }  });
+        
         for (File doc : FileSearch) {
 
             Scanner obj = new Scanner(doc);
@@ -34,19 +35,7 @@ public class Main {
                 }
             }
 
-            else if (doc.getPath().contains("fiche_agent.txt")){
-                str = "";
-                while (obj.hasNextLine()){
-                    str += str == "" ? obj.nextLine() : "," + obj.nextLine();
-                }
-                
-                String[] parts = str.split(",");
-                for (String part : parts) {
-                    lFiche.add(part);
-                }
-            }
-
-            else if (doc.getPath().contains("agent.txt")){
+            else if (doc.getPath().contains("staff.txt")){
                 str = "";
                 while (obj.hasNextLine()){
                     str += str == "" ? obj.nextLine() : "," + obj.nextLine();
@@ -57,9 +46,49 @@ public class Main {
                     lAgent.add(part);
                 }
             }
+            else{
+                str = "";
+                while (obj.hasNextLine()){
+                    str += str == "" ? obj.nextLine() : "," + obj.nextLine();
+                }
+                
+                String[] parts = str.split(",");
+                for (String part : parts) {
+                    lFiche.add(part);
+                }
+                String NameAgent=parts[1].toLowerCase().charAt(0)+parts[0].toLowerCase();
+                PrintWriter writer = new PrintWriter("C:\\Users\\a.dupont\\Documents\\GO-Securi\\java\\"+NameAgent+".html");
+                lFiche.remove(parts[0]);
+                lFiche.remove(parts[1]);
+                lFiche.remove(parts[2]);
+                lFiche.remove(parts[3]);
+                //header
+                writer.println("<!doctype html>\n<html lang='fr'>\n<head>\n<meta charset='utf-8'>\n<title>Titre de la page</title>\n<link rel='stylesheet' href='style.css'>\n<script src='script.js'></script>\n </head>\n<body>");
+                writer.println("<div style='height:50%'>");
+
+                writer.println("<div class='boxName'>");
+                writer.println("<a>"+parts[0]+"<a>");
+                writer.println("</div>");
+                writer.println("<img class='imgAgent' src='img\\"+NameAgent+".png'/>");
+                writer.println("</div>");
+                //body
+                writer.println("<div class='container listeEquipement'>");
+                
+              
+                writer.println("<h2>Equipements </h2>");
+                for (String ficheAgent : lFiche){
+                    writer.println("<div class='Equipement'><a>"+ficheAgent+"<a></div>");
+                }
+              
+                writer.println("</div>");
+                //footer
+                writer.println("\n </body> \n </html>");
+                writer.close();
+                lFiche.removeAll(lFiche);
+            }
         }
         // génération html
-        PrintWriter writer = new PrintWriter("test2.html");
+        PrintWriter writer = new PrintWriter("C:\\Users\\a.dupont\\Documents\\GO-Securi\\java\\Accueil.html");
         //header
         writer.println("<!doctype html>\n<html lang='fr'>\n<head>\n<meta charset='utf-8'>\n<title>Titre de la page</title>\n<link rel='stylesheet' href='style.css'>\n<script src='script.js'></script>\n</head>\n<body>");
         //body
@@ -69,8 +98,10 @@ public class Main {
         writer.println("<h2>Liste de nos agents :</h2>");
         //liste des agents 
         writer.println("<ul>");
-        for (String agent : lAgent){
-            writer.println("<li><a href='#'>"+agent+"<a></li>");
+        for (String agent : lAgent  ){
+        	
+            writer.println("<li><a href='"+ agent +".html'>"+agent+"<a></li>");
+        	
         }
         writer.println("</ul>");
         writer.println("</div>");
