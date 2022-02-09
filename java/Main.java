@@ -88,7 +88,7 @@ public class Main {
             }
         }
         // génération html
-        PrintWriter writer = new PrintWriter("C:\\Users\\a.dupont\\Documents\\GO-Securi\\java\\Accueil.html");
+        PrintWriter writer = new PrintWriter("C:\\Users\\a.dupont\\Documents\\GO-Securi\\java\\index.html");
         //header
         writer.println("<!doctype html>\n<html lang='fr'>\n<head>\n<meta charset='utf-8'>\n<title>Titre de la page</title>\n<link rel='stylesheet' href='style.css'>\n<script src='script.js'></script>\n</head>\n<body>");
         //body
