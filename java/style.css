@@ -13,20 +13,45 @@ body{
     width: 100%;
     margin : 0;
     padding: 0;
+    background-color: #ecf0f1;
+}
+
+
+.container{
+    width : 90%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.container{
-    width : 50%;
+.listeAgents{
+    width : 30%;
     height: auto;
-    background-color: grey;
+    background-color: #379EC1;
+    border-radius: 5%;
+}
+
+.listeAgents h2{
+    text-align: center;
+    color : #ecf0f1;
 }
 
 a{
     color : black;
 }
 
+ul {
+    list-style: none; /* Remove default bullets */
+  }
+  
+  ul li::before {
+    content: "\2022";
+    color: #ecf0f1;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+  }
 
 

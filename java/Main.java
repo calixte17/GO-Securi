@@ -58,17 +58,22 @@ public class Main {
                 }
             }
         }
-
+        // génération html
         PrintWriter writer = new PrintWriter("test2.html");
         //header
         writer.println("<!doctype html>\n<html lang='fr'>\n<head>\n<meta charset='utf-8'>\n<title>Titre de la page</title>\n<link rel='stylesheet' href='style.css'>\n<script src='script.js'></script>\n</head>\n<body>");
         //body
+        writer.println("<h1>Projet MSPR</h1>");
         writer.println("<div class='container'>");
+        writer.println("<div class='listeAgents'>");
+        writer.println("<h2>Liste de nos agents :</h2>");
+        //liste des agents 
         writer.println("<ul>");
         for (String agent : lAgent){
             writer.println("<li><a href='#'>"+agent+"<a></li>");
         }
         writer.println("</ul>");
+        writer.println("</div>");
         writer.println("</div>");
         //footer
         writer.println("\n </body> \n </html>");
