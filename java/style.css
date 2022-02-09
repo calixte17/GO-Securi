@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'roboto';
+    src: url('\font\Roboto-Black.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    font-family: 'roboto';
+}
+
+body{
+    width: 100%;
+    margin : 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    width : 50%;
+    height: auto;
+    background-color: grey;
+}
+
+a{
+    color : black;
+}
+
+
+
