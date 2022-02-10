@@ -4,4 +4,3 @@ Protection
 
 kit
 lacrymo
-gaz
