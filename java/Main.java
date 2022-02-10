@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
@@ -14,13 +13,13 @@ public class Main {
         List<Equipement> lEquipement = new Vector<Equipement>();
         List<String> lFiche = new Vector<String>();
         //File doc = new File("test.txt");
-        File dir = new File("java\\file");
+        File dir = new File(".\\java\\file");
         File[] FileSearch = dir.listFiles(new FilenameFilter() {
             public boolean accept(File dir, String name) {
                 return name.endsWith("txt");
         }  });
         
-        File liste = new File("java\\file\\liste.txt");
+        File liste = new File(".\\java\\file\\liste.txt");
         Scanner listetxt = new Scanner(liste);
             str = "";
             while (listetxt.hasNextLine()){
@@ -67,13 +66,13 @@ public class Main {
                     lFiche.add(part);
                 }
                 String NameAgent=parts[1].toLowerCase().charAt(0)+parts[0].toLowerCase();
-                PrintWriter writer = new PrintWriter("java\\"+NameAgent+".html");
+                PrintWriter writer = new PrintWriter(".\\java\\"+NameAgent+".html");
                 lFiche.remove(parts[0]);
                 lFiche.remove(parts[1]);
                 lFiche.remove(parts[2]);
                 lFiche.remove(parts[3]);
                 //header
-                writer.println("<!doctype html>\n<html lang='fr'>\n<head>\n<meta charset='utf-8'>\n<title>Titre de la page</title>\n<link rel='stylesheet' href='style.css'>\n<script src='script.js'></script>\n </head>\n<body>");
+                writer.println("<!doctype html>\n<html lang='fr'>\n<head>\n<meta charset='utf-8'>\n<title>"+parts[0]+" "+parts[1] +"</title>\n<link rel='stylesheet' href='style.css'>\n<script src='script.js'></script>\n </head>\n<body>");
                 writer.println("<div style='height:50%'>");
 
                 writer.println("<div class='boxName'>");
@@ -100,11 +99,12 @@ public class Main {
                 writer.println("\n </body> \n </html>");
                 writer.close();
                 lFiche.removeAll(lFiche);
+                obj.close();
             }
         }
         java.util.Collections.sort(lAgent);
         // génération html
-        PrintWriter writer = new PrintWriter("C:\\Users\\a.dupont\\Documents\\GO-Securi\\java\\index.html");
+        PrintWriter writer = new PrintWriter(".\\java\\index.html");
         //header
         writer.println("<!doctype html>\n<html lang='fr'>\n<head>\n<meta charset='utf-8'>\n<title>Titre de la page</title>\n<link rel='stylesheet' href='style.css'>\n<script src='script.js'></script>\n</head>\n<body>");
         //body
